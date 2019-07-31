@@ -1,0 +1,5 @@
+OAuth client
+The client ID and secret can always be accessed from Credentials in APIs & Services
+
+your client ID : 781161430150-e9g5g7t3n2kmqpaktlsqh15gehvclfg9.apps.googleusercontent.com
+your client Secret : twTR8kaBAcG5bPRv3iroMKFI
