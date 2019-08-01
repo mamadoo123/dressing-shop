@@ -36,3 +36,4 @@ export const createUserProfileDocument = async(userAuth, otherData) => {
 export default firebase;
 
 
+
