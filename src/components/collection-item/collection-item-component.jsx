@@ -1,7 +1,15 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {addItem} from '../../redux/card/card-actions';
+
 import './collection-item.scss';
 
-const CollectionItem = ({id, name, imageUrl, price}) => (
+import ButtonComponent from '../button-component/button-component';
+
+
+const CollectionItem = ({item, addItem}) => {
+    const {id, name, imageUrl, price} = item;
+    return(
     <div className="collection-item">
         <div 
             className="image"
@@ -13,7 +21,14 @@ const CollectionItem = ({id, name, imageUrl, price}) => (
             <span className="name">{name}</span>
             <span className="price">{price}</span>
         </div>
+        <ButtonComponent inverted onClick={()=>addItem(item)}>
+        Add To Card
+        </ButtonComponent>
     </div>
-)
+    );   
+}
 
-export default CollectionItem;
+const mapDispatchToProps = dispatch => ({
+    addItem: item=>dispatch(addItem(item))
+});
+export default connect(null, mapDispatchToProps)(CollectionItem)
