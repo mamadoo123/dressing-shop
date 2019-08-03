@@ -1,4 +1,4 @@
-import CardActiontypes from './cart-types';
+import CardActiontypes from './card-types';
 import {addItemToCard} from './card-utilities';
 
 const INITIAL_STATE = {
