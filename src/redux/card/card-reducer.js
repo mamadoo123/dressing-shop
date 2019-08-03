@@ -1,5 +1,5 @@
 import CardActiontypes from './card-types';
-import {addItemToCard} from './card-utilities';
+import {addItemToCard, removeItemFromCard, decreaseItemQuantitiesByOne} from './card-utilities';
 
 const INITIAL_STATE = {
     hidden: true,
@@ -18,6 +18,16 @@ const cardReducer = (state= INITIAL_STATE, action) => {
                 ...state,
                 cardItems:addItemToCard(state.cardItems, action.payload)
             };
+        case CardActiontypes.REMOVE_ITEM:
+            return{
+                ...state,
+                cardItems:removeItemFromCard(state.cardItems, action.payload)
+            };
+        case CardActiontypes.DECREASE_ITEM_QUANTITIES_BY_ONE:
+            return{
+                ...state,
+                cardItems:decreaseItemQuantitiesByOne(state.cardItems, action.payload)
+            }
         default:
             return state;
     }
