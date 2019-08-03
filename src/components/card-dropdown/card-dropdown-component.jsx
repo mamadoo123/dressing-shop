@@ -1,23 +1,32 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import {withRouter} from 'react-router-dom';
+
+import './card-dropdown.scss';
 
 import ButtonComponent from '../button-component/button-component';
 import CardItem from '../card-item/card-item-component';
-
-import './card-dropdown.scss';
 import { selectCardItems } from '../../redux/card/card-selectors';
+import { toggleCardHidden } from '../../redux/card/card-actions';
 
-const CardDropdown = ({cardItems}) => (
+const CardDropdown = ({cardItems, history, dispatch}) => (
     <div className="card-dropdown">
         <div className="card-items">
-        { 
-          cardItems.map(cardItem =>(<CardItem key={cardItem.id} item={cardItem}/>)) 
+        { cardItems.length ?
+          cardItems.map(cardItem =>(<CardItem key={cardItem.id} item={cardItem}/>)):
+          <span className="empty-message">your card is empty</span> 
         }
         </div>
-        <ButtonComponent>Go To Checkout</ButtonComponent>
+        <ButtonComponent onClick={()=> {
+            history.push('/checkout');
+            dispatch(toggleCardHidden());
+            }}>
+            Go To Checkout</ButtonComponent>
     </div>
 );
-const mapStateToProps = state => ({
-    cardItems: selectCardItems(state)
-})
-export default connect(mapStateToProps)(CardDropdown)
+const mapStateToProps =createStructuredSelector({
+    cardItems: selectCardItems
+});
+
+export default withRouter(connect(mapStateToProps)(CardDropdown))

@@ -13,3 +13,15 @@ export const selectCardItemsCount = createSelector(
         (accumulatedQuantity, cardItem)=> accumulatedQuantity + cardItem.quantity
         ,0)
 );
+
+export const selectCardHidden = createSelector(
+    [selectCard],
+    card => card.hidden
+);
+
+export const selectTotalPrice = createSelector(
+    [selectCardItems],
+    cardItems => cardItems.reduce(
+        (accumulatedPrice, cardItem)=> accumulatedPrice + cardItem.price * cardItem.quantity
+        ,0)
+)

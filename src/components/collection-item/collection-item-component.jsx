@@ -8,7 +8,7 @@ import ButtonComponent from '../button-component/button-component';
 
 
 const CollectionItem = ({item, addItem}) => {
-    const {id, name, imageUrl, price} = item;
+    const {name, imageUrl, price} = item;
     return(
     <div className="collection-item">
         <div 
