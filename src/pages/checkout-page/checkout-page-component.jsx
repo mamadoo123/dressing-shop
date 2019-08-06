@@ -5,6 +5,7 @@ import { createStructuredSelector } from 'reselect';
 import {selectTotalPrice, selectCardItems} from '../../redux/card/card-selectors';
 import './checkout-page.scss';
 import CheckoutItem from '../../components/checkout-item/checkout-item-component';
+import StripeButton from '../../components/stripe-button/stripe-button-component';
 
 const CheckoutPage = ({cardItems, totalPrice})=>(
 <div className="checkout-page">
@@ -29,10 +30,13 @@ const CheckoutPage = ({cardItems, totalPrice})=>(
         cardItems.map(cardItem => (
             <CheckoutItem key={cardItem.id} cardItem={cardItem}/> ))
     }
-    <div>
-        <span className="total">Total: ${totalPrice}</span>
+    <div className="total">Total: ${totalPrice}</div>
+    <StripeButton price={totalPrice}/>
+    <div className="test-warning">
+        *Pleaseuse this card info to try the payment in my app*
+        <br />
+        card number: 4242 - 4242 - 4242 - 4242 EXP: 01/20 CVV: 123
     </div>
-    
 </div>
 )
 

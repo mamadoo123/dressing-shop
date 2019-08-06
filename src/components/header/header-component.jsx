@@ -14,7 +14,7 @@ import { selectCurrentUser} from '../../redux/user/user-selectors';
 const Header = ({currentUser, hidden})=>(
     <div className="header">
         <Link to="/" className="logo-container">
-            <Logo className="logo"/>
+            <Logo className="logo" alt="Queen Home"/>
         </Link>
         <div className="options">
             <Link to="/shop" className="option">SHOP</Link>
